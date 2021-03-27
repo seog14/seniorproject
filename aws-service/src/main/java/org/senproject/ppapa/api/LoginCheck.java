@@ -14,6 +14,13 @@ import org.senproject.ppapa.dto.Login;
 import org.senproject.ppapa.dto.Response;
 import org.senproject.ppapa.repository.UserRepository;
 
+import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.cloudwatchevents.AmazonCloudWatchEvents;
+import com.amazonaws.services.cloudwatchevents.AmazonCloudWatchEventsClientBuilder;
+import com.amazonaws.services.cloudwatchevents.model.PutRuleRequest;
+import com.amazonaws.services.cloudwatchevents.model.PutRuleResult;
+import com.amazonaws.services.cloudwatchevents.model.RuleState;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
 
@@ -45,6 +52,9 @@ public class LoginCheck implements RequestStreamHandler {
 
 			}
 
+			// Test to put rule
+			putCWRule();
+			//
 			JSONObject headerJson = new JSONObject();
 			headerJson.put("x-custom-header", "my custom header value");
 
@@ -55,8 +65,6 @@ public class LoginCheck implements RequestStreamHandler {
 		} catch (ParseException pex) {
 			responseJson.put("statusCode", 400);
 			responseJson.put("exception", pex);
-		} catch (Exception e) {
-			
 		}
 
 		OutputStreamWriter writer = new OutputStreamWriter(output, "UTF-8");
@@ -74,4 +82,27 @@ public class LoginCheck implements RequestStreamHandler {
 
 	}
 
+	public void putCWRule() {
+//		try {
+//		System.setProperty("aws.accessKeyId", "AKIASYDRTNJ5XI2MNP67");
+//		System.setProperty("aws.secretKey", "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");
+
+		AmazonCloudWatchEventsClientBuilder builder = AmazonCloudWatchEventsClientBuilder.standard();
+		AmazonCloudWatchEvents cwe = AmazonCloudWatchEventsClientBuilder.standard().withEndpointConfiguration(
+				new EndpointConfiguration("https://events.us-east-2.amazonaws.com", Regions.US_EAST_2.getName())).build();		
+		
+			PutRuleRequest request = new PutRuleRequest()
+					.withName("GARR_IS_IDIOT_RULE")
+					.withScheduleExpression("rate(5 minutes)")
+					.withState(RuleState.ENABLED);
+
+			PutRuleResult response = cwe.putRule(request);
+			System.out.printf("Successfully created CloudWatch events rule %s with arn %s", response.toString(),
+					response.getRuleArn());
+			// roleArn, response.ruleArn());
+//		} catch (CloudWatchException e) {
+//			System.err.println(e.awsErrorDetails().errorMessage());
+//			System.exit(1);
+//		}
+	}
 }

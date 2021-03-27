@@ -15,6 +15,17 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.amazonaws</groupId>
+				<artifactId>aws-java-sdk-bom</artifactId>
+				<version>1.11.907</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
@@ -36,6 +47,13 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.6</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-core -->
+		<dependency>
+		    <groupId>com.amazonaws</groupId>
+		    <artifactId>aws-java-sdk-core</artifactId>
+    		<version>1.11.907</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-lambda-java-events</artifactId>
@@ -52,23 +70,25 @@
 			<artifactId>spring-web</artifactId>
 			<version>4.3.8.RELEASE</version>
 		</dependency>
-
+	
 		<dependency>
-    <groupId>com.amazonaws</groupId>
-    <artifactId>aws-java-sdk-events</artifactId>
-    <version>1.11.986</version>
-</dependency>
-
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-events</artifactId>
+			<version>1.11.907</version>
+		</dependency>	
+		<!--
 		<dependency>
 			<groupId>software.amazon.awssdk</groupId>
 			<artifactId>cloudwatchevents</artifactId>
 			<version>2.16.28</version>
 		</dependency>
+ 
 		<dependency>
 			<groupId>software.amazon.awssdk</groupId>
 			<artifactId>cloudwatch</artifactId>
 			<version>2.16.29</version>
 		</dependency>
+		 -->
 	</dependencies>
 
 	<build>

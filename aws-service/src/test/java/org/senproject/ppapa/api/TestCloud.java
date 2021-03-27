@@ -1,17 +1,20 @@
 package org.senproject.ppapa.api;
 
-import software.amazon.awssdk.services.cloudwatch.model.CloudWatchException;
+import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration;
+import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.cloudwatchevents.AmazonCloudWatchEvents;
-import com.amazonaws.services.cloudwatchevents.AmazonCloudWatchEventsClient;
 import com.amazonaws.services.cloudwatchevents.AmazonCloudWatchEventsClientBuilder;
+import com.amazonaws.services.cloudwatchevents.model.ListRulesRequest;
 import com.amazonaws.services.cloudwatchevents.model.PutRuleRequest;
 import com.amazonaws.services.cloudwatchevents.model.PutRuleResult;
 import com.amazonaws.services.cloudwatchevents.model.RuleState;
 
-
-
 public class TestCloud {
 
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 //	       final String USAGE = "\n" +
@@ -26,11 +29,17 @@ public class TestCloud {
 //	            System.exit(1);
 //	        }
 
-		String ruleName = "idk";
+		String ruleName = "idk-garrettsssss";
 		String roleArn = "arn:aws:events:us-east-1:189216811643";
-
-		AmazonCloudWatchEventsClient cwe = new AmazonCloudWatchEventsClient(); 
-
+		System.setProperty("aws.accessKeyId", "AKIASYDRTNJ5XI2MNP67");
+		System.setProperty("aws.secretKey", "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");
+//		AmazonCloudWatchEventsClient cwe = new AmazonCloudWatchEventsClient(); 
+//		AmazonCloudWatchEvents cwe =
+//				AmazonCloudWatchEventsClientBuilder.defaultClient();
+		AmazonCloudWatchEvents cwe = AmazonCloudWatchEventsClientBuilder.standard().withEndpointConfiguration(
+				new EndpointConfiguration("https://events.us-east-2.amazonaws.com", Regions.US_EAST_2.getName())).build();		
+//		cwe.setRegion(Region.getRegion(Regions.US_EAST_1));
+		cwe.listRules(new ListRulesRequest());
 		putCWRule(cwe, ruleName, roleArn);
 		
 	}
@@ -41,15 +50,16 @@ public class TestCloud {
 		try {
 			PutRuleRequest request = new PutRuleRequest()
 					.withName(ruleName)
-					.withRoleArn(roleArn)
-					.withScheduleExpression("rate(5 minutes)")
+					//.withRoleArn("arn:aws:iam::189216811643:role/service-role/APILoginCheck-role-x4ksfdn8")
+					.withScheduleExpression("rate(20 minutes)")
 					.withState(RuleState.ENABLED);
 
 			PutRuleResult response = cwe.putRule(request);
-			System.out.printf("Successfully created CloudWatch events rule %s with arn %s");
+			System.out.printf("Successfully created CloudWatch events rule %s with arn %s", response.toString(),
+					response.getRuleArn());
 			// roleArn, response.ruleArn());
-		} catch (CloudWatchException e) {
-			System.err.println(e.awsErrorDetails().errorMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
 			System.exit(1);
 		}
 	}
