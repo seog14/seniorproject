@@ -31,8 +31,7 @@ public class TestCloud {
 
 		String ruleName = "idk-garrettsssss";
 		String roleArn = "arn:aws:events:us-east-1:189216811643";
-		System.setProperty("aws.accessKeyId", "AKIASYDRTNJ5XI2MNP67");
-		System.setProperty("aws.secretKey", "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");
+		
 //		AmazonCloudWatchEventsClient cwe = new AmazonCloudWatchEventsClient(); 
 //		AmazonCloudWatchEvents cwe =
 //				AmazonCloudWatchEventsClientBuilder.defaultClient();
