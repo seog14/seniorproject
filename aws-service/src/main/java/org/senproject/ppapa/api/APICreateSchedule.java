@@ -69,8 +69,7 @@ public class APICreateSchedule {
 	
 	public void putCWRule(String name, int month, int hour, int minute ) {
 //		try {
-//		System.setProperty("aws.accessKeyId", "AKIASYDRTNJ5XI2MNP67");
-//		System.setProperty("aws.secretKey", "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");
+
 
 		AmazonCloudWatchEventsClientBuilder builder = AmazonCloudWatchEventsClientBuilder.standard();
 		AmazonCloudWatchEvents cwe = AmazonCloudWatchEventsClientBuilder.standard().withEndpointConfiguration(
