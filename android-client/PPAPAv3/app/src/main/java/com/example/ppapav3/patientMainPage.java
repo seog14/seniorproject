@@ -29,8 +29,10 @@ public class patientMainPage extends AppCompatActivity {
             public void onClick(View v) {
                 String signal = "1";
                 Intent intent = new Intent(patientMainPage.this, patientReady.class);
-                intent.putExtra("patientReady", signal);
+                Intent intent3 = new Intent(patientMainPage.this, doctorMainPage.class);
+                intent3.putExtra("patientReady", signal);
                 startActivity(intent);
+                startActivity(intent3);
             }
         });
         LogOut.setOnClickListener(new View.OnClickListener() {

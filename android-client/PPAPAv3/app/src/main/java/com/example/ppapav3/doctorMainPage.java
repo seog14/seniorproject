@@ -16,7 +16,7 @@ public class doctorMainPage extends AppCompatActivity {
     private Button EditPatient;
     private Button EditPharm;
     private Button AddPresc;
-    String Signal = getIntent().getStringExtra("patientReady");
+    //String Signal = getIntent().getStringExtra("patientReady");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,9 @@ public class doctorMainPage extends AppCompatActivity {
         AddPresc = (Button)findViewById(R.id.btAddPresc);
 
         Ready.setEnabled(false);
+        Intent intent3 = getIntent();
+        String Signal = intent3.getStringExtra("patientReady");
+
 
         if (Signal == "1")
         {
