@@ -40,4 +40,8 @@ public class Schedule extends JsonModel {
 	public void setMonth(int month) {
 		this.month = month;
 	}
+	
+	public void setUTC() {
+		hour = (hour + 4) % 24; 
+	}
 }

@@ -34,8 +34,13 @@ public class TestSQS implements RequestStreamHandler {
 			context.getLogger().log("APICreatePrescription invoked " + event);
 
 			if (event.get("body") != null) {
+					PrescriptionRepository prescriptionR = new PrescriptionRepository(); 
 					PatientSQS patientSQS = (PatientSQS) PatientSQS.newInstance(PatientSQS.class, (String) event.get("body"));
-					response.setMessage(patientSQS.getUser());
+					Prescription p = new Prescription(); 
+					p.setKey(patientSQS.getUser());
+					p.setInformation("asdf");
+					prescriptionR.save(p);
+					response.setMessage("asdf");
 					response.setError("No Error");
 					response.setStatus(1);
 				

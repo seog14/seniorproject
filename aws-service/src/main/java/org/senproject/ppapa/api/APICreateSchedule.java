@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.util.UUID;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -40,6 +41,7 @@ public class APICreateSchedule {
 			context.getLogger().log("CreateSchedule invoked " + event);
 			if (event.get("body") != null) {
 				Schedule schedule = (Schedule) Schedule.newInstance(Schedule.class, (String) event.get("body"));
+				schedule.setUTC();
 				putCWRule(schedule.getUser(), schedule.getMonth(), schedule.getHour(), schedule.getMinute());
 				addTarget(schedule.getUser());
 				response.setMessage("Success");
@@ -102,8 +104,10 @@ public class APICreateSchedule {
 		
 		PatientSQS patientSQS = new PatientSQS(); 
 		patientSQS.setUser(name);
+		String id = UUID.randomUUID().toString();
 		Target target = new Target()
 				.withArn("arn:aws:lambda:us-east-1:245932314163:function:APIPushSQSPatient")
+				.withId(id)
 				.withInput(patientSQS.toString());
 		
 		PutTargetsRequest request = new PutTargetsRequest()
