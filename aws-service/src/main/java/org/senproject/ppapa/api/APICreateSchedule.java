@@ -10,6 +10,7 @@ import java.io.OutputStreamWriter;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.senproject.ppapa.dto.PatientSQS;
 import org.senproject.ppapa.dto.Response;
 import org.senproject.ppapa.dto.Schedule;
 
@@ -19,7 +20,10 @@ import com.amazonaws.services.cloudwatchevents.AmazonCloudWatchEvents;
 import com.amazonaws.services.cloudwatchevents.AmazonCloudWatchEventsClientBuilder;
 import com.amazonaws.services.cloudwatchevents.model.PutRuleRequest;
 import com.amazonaws.services.cloudwatchevents.model.PutRuleResult;
+import com.amazonaws.services.cloudwatchevents.model.PutTargetsRequest;
+import com.amazonaws.services.cloudwatchevents.model.PutTargetsResult;
 import com.amazonaws.services.cloudwatchevents.model.RuleState;
+import com.amazonaws.services.cloudwatchevents.model.Target;
 import com.amazonaws.services.lambda.runtime.Context;
 
 public class APICreateSchedule {
@@ -37,6 +41,7 @@ public class APICreateSchedule {
 			if (event.get("body") != null) {
 				Schedule schedule = (Schedule) Schedule.newInstance(Schedule.class, (String) event.get("body"));
 				putCWRule(schedule.getUser(), schedule.getMonth(), schedule.getHour(), schedule.getMinute());
+				addTarget(schedule.getUser());
 				response.setMessage("Success");
 				response.setError("No Error");
 				response.setStatus(1);
@@ -77,7 +82,7 @@ public class APICreateSchedule {
 		
 			PutRuleRequest request = new PutRuleRequest()
 					.withName(name)
-					.withScheduleExpression("cron(" + minute + " " + hour + " * " + month + " ? 2021")
+					.withScheduleExpression("cron(" + minute + " " + hour + " * " + month + " ? 2021)")
 					.withState(RuleState.ENABLED);
 
 			PutRuleResult response = cwe.putRule(request);
@@ -89,12 +94,23 @@ public class APICreateSchedule {
 //			System.exit(1);
 //		}
 	}
+
+	public void addTarget(String name) {
+		AmazonCloudWatchEventsClientBuilder builder = AmazonCloudWatchEventsClientBuilder.standard();
+		AmazonCloudWatchEvents cwe = AmazonCloudWatchEventsClientBuilder.standard().withEndpointConfiguration(
+				new EndpointConfiguration("https://events.us-east-1.amazonaws.com", Regions.US_EAST_1.getName())).build();
+		
+		PatientSQS patientSQS = new PatientSQS(); 
+		patientSQS.setUser(name);
+		Target target = new Target()
+				.withArn("arn:aws:lambda:us-east-1:245932314163:function:APIPushSQSPatient")
+				.withInput(patientSQS.toString());
+		
+		PutTargetsRequest request = new PutTargetsRequest()
+			    .withTargets(target)
+			    .withRule(name);
+		
+
+		PutTargetsResult response = cwe.putTargets(request);
+	}
 }
-//	public void addTarget(String name) {
-//		AmazonCloudWatchEventsClientBuilder builder = AmazonCloudWatchEventsClientBuilder.standard();
-//		AmazonCloudWatchEvents cwe = AmazonCloudWatchEventsClientBuilder.standard().withEndpointConfiguration(
-//				new EndpointConfiguration("https://events.us-east-1.amazonaws.com", Regions.US_EAST_1.getName())).build();
-//		
-//		Target target = new Target(.)
-//	}
-//}

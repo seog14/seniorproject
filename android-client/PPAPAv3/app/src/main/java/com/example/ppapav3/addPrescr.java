@@ -24,7 +24,7 @@ public class addPrescr extends AppCompatActivity {
     private EditText NewPharm;
     private EditText Prescription;
     private Button CreatePresc;
-    private static String url = "https://gv4j3htte5.execute-api.us-east-1.amazonaws.com/test/APICreatePrescription";
+    private static String url = "https://3c1i4zf2oe.execute-api.us-east-1.amazonaws.com/APICreatePrescription/APICreatePrescription";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

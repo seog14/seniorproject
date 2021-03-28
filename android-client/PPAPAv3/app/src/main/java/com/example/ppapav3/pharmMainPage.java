@@ -27,7 +27,7 @@ public class pharmMainPage extends AppCompatActivity {
     private Button LogOut;
     private TextView Pharmer;
     private String info;
-    private static String url = "https://2ixsb9kljc.execute-api.us-east-1.amazonaws.com/GetPrescription/APIGetPrescription";
+    private static String url = "https://ohrtc5rmuk.execute-api.us-east-1.amazonaws.com/APIGetPrescription/APIGetPrescription";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
