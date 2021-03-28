@@ -8,29 +8,14 @@
     tools:context=".doctorEdit">
 
     <EditText
-        android:id="@+id/etTime3"
-        android:layout_width="81dp"
-        android:layout_height="39dp"
-        android:ems="10"
-        android:hint="hh:mm"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.873"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65" />
-
-    <EditText
-        android:id="@+id/etDate2"
+        android:id="@+id/etHour"
         android:layout_width="121dp"
         android:layout_height="38dp"
         android:ems="10"
-        android:hint="mm/dd/yyyy"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.181"
+        app:layout_constraintHorizontal_bias="0.348"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.555" />
@@ -40,12 +25,12 @@
         android:layout_width="93dp"
         android:layout_height="41dp"
         android:gravity="center"
-        android:text="Date:"
+        android:text="Minute:"
         android:textColor="#020202"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nullPatient"
         app:layout_constraintVertical_bias="0.624" />
@@ -55,12 +40,12 @@
         android:layout_width="93dp"
         android:layout_height="41dp"
         android:gravity="center"
-        android:text="Date:"
+        android:text="Hour:"
         android:textColor="#020202"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nullPatient"
         app:layout_constraintVertical_bias="0.521" />
@@ -79,57 +64,27 @@
         app:layout_constraintVertical_bias="0.224" />
 
     <EditText
-        android:id="@+id/etTime1"
-        android:layout_width="81dp"
-        android:layout_height="39dp"
-        android:ems="10"
-        android:hint="hh:mm"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.87"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.462" />
-
-    <EditText
-        android:id="@+id/etTime2"
-        android:layout_width="81dp"
-        android:layout_height="39dp"
-        android:ems="10"
-        android:hint="hh:mm"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.873"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.559" />
-
-    <EditText
-        android:id="@+id/etDate1"
+        android:id="@+id/etMonth"
         android:layout_width="121dp"
         android:layout_height="38dp"
         android:ems="10"
-        android:hint="mm/dd/yyyy"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.187"
+        app:layout_constraintHorizontal_bias="0.348"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.461" />
 
     <EditText
-        android:id="@+id/etDate3"
+        android:id="@+id/etMinute"
         android:layout_width="121dp"
         android:layout_height="38dp"
         android:ems="10"
-        android:hint="mm/dd/yyyy"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.181"
+        app:layout_constraintHorizontal_bias="0.348"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.65" />
@@ -139,12 +94,12 @@
         android:layout_width="93dp"
         android:layout_height="41dp"
         android:gravity="center"
-        android:text="Date:"
+        android:text="Month:"
         android:textColor="#020202"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nullPatient"
         app:layout_constraintVertical_bias="0.42" />
@@ -242,4 +197,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.297" />
+
+    <Button
+        android:id="@+id/btCreateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="508dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

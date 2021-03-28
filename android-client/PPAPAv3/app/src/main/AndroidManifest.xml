@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PPAPAv3">
-        <activity android:name=".createBadPresc"></activity>
+        <activity android:name=".createGoodTime"></activity>
+        <activity android:name=".createBadPresc" />
         <activity android:name=".createGoodPresc" />
         <activity android:name=".createGood2" />
         <activity android:name=".createGood3" />
@@ -25,7 +26,6 @@
         <activity android:name=".doctorEdit" />
         <activity android:name=".doctorReady" />
         <activity android:name=".doctorMainPage" />
-
         <activity android:name=".pharmLogin" />
         <activity android:name=".patientLogin" />
         <activity android:name=".doctorLogin" />
@@ -36,8 +36,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>

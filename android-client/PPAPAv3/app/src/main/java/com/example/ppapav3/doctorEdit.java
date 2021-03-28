@@ -11,7 +11,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.ppapav3.dto.AppResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,11 +23,9 @@ public class doctorEdit extends AppCompatActivity {
     private EditText Date1;
     private EditText Date2;
     private EditText Date3;
-    private EditText Time1;
-    private EditText Time2;
-    private EditText Time3;
     private Button Back;
     private Button CreatePA;
+    private Button CreateTime;
     private static String url = "https://sx5bm5veyg.execute-api.us-east-1.amazonaws.com/test-user/APICreateUser";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,17 +36,20 @@ public class doctorEdit extends AppCompatActivity {
         Back = (Button)findViewById(R.id.btBack);
         PUser = (EditText)findViewById(R.id.etPharmNewUser);
         PPass = (EditText)findViewById(R.id.etPatientPassEdit);
-        Date1 = (EditText)findViewById(R.id.etDate1);
-        Date2 = (EditText)findViewById(R.id.etDate2);
-        Date3 = (EditText)findViewById(R.id.etDate3);
-        Time1 = (EditText)findViewById(R.id.etTime1);
-        Time2 = (EditText)findViewById(R.id.etTime2);
-        Time3 = (EditText)findViewById(R.id.etTime3);
+        Date1 = (EditText)findViewById(R.id.etMonth);
+        Date2 = (EditText)findViewById(R.id.etHour);
+        Date3 = (EditText)findViewById(R.id.etMinute);
+        CreateTime = (Button)findViewById(R.id.btCreateTime);
 
-
+        CreateTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(doctorEdit.this, createGoodTime.class);
+                startActivity(intent);
+            }
+        });
         CreatePA.setOnClickListener(new View.OnClickListener() {
             @Override
-
             public void onClick(View v) {
                 JSONObject jsonObj;
                 try {
