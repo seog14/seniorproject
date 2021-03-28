@@ -10,10 +10,8 @@ import java.io.OutputStreamWriter;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.senproject.ppapa.dto.Login;
 import org.senproject.ppapa.dto.Response;
 import org.senproject.ppapa.dto.Schedule;
-import org.senproject.ppapa.repository.UserRepository;
 
 import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration;
 import com.amazonaws.regions.Regions;
@@ -48,7 +46,7 @@ public class APICreateSchedule {
 			responseJson.put("statusCode", 200);
 			responseJson.put("headers", headerJson);
 			responseJson.put("body", response.toString());
-
+			}
 		} catch (ParseException pex) {
 			response.setMessage("Failure");
 			response.setError("Error");
@@ -92,11 +90,12 @@ public class APICreateSchedule {
 //			System.exit(1);
 //		}
 	}
-	public void addTarget(String name) {
-		AmazonCloudWatchEventsClientBuilder builder = AmazonCloudWatchEventsClientBuilder.standard();
-		AmazonCloudWatchEvents cwe = AmazonCloudWatchEventsClientBuilder.standard().withEndpointConfiguration(
-				new EndpointConfiguration("https://events.us-east-1.amazonaws.com", Regions.US_EAST_1.getName())).build();
-		
-		Target target = new Target(.)
-	}
 }
+//	public void addTarget(String name) {
+//		AmazonCloudWatchEventsClientBuilder builder = AmazonCloudWatchEventsClientBuilder.standard();
+//		AmazonCloudWatchEvents cwe = AmazonCloudWatchEventsClientBuilder.standard().withEndpointConfiguration(
+//				new EndpointConfiguration("https://events.us-east-1.amazonaws.com", Regions.US_EAST_1.getName())).build();
+//		
+//		Target target = new Target(.)
+//	}
+//}

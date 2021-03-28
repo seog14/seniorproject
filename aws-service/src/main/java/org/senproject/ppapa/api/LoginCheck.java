@@ -53,7 +53,7 @@ public class LoginCheck implements RequestStreamHandler {
 			}
 
 			// Test to put rule
-			putCWRule();
+		
 			//
 			JSONObject headerJson = new JSONObject();
 			headerJson.put("x-custom-header", "my custom header value");
