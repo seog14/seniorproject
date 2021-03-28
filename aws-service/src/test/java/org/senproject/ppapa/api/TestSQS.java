@@ -31,6 +31,7 @@ public class TestSQS implements RequestStreamHandler {
 		try {
 			JSONObject responseBody = new JSONObject();
 			JSONObject event = (JSONObject) parser.parse(reader);
+			context.getLogger().log("APICreatePrescription invoked ");
 			context.getLogger().log("APICreatePrescription invoked " + event);
 
 			if (event.get("body") != null) {
