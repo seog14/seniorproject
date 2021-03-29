@@ -90,8 +90,8 @@ public class doctorEdit extends AppCompatActivity {
 
                             @Override
                             public void onResponse(JSONObject response1) {
-                                Intent intent = new Intent(doctorEdit.this, createGood2.class);
-                                startActivity(intent);
+                                
+
                             }
                         }, new Response.ErrorListener() {
 
@@ -102,7 +102,8 @@ public class doctorEdit extends AppCompatActivity {
                             }
                         });
                 RQueueSingleton.getInstance(getApplicationContext()).getRequestQueue().add(jsonObjectRequest1);
-
+                Intent intent = new Intent(doctorEdit.this, createGood2.class);
+                startActivity(intent);
             }
 
         });
