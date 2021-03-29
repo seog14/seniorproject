@@ -26,6 +26,8 @@ public class pharmMainPage extends AppCompatActivity {
     private Button Refresh;
     private TextView Pharmer;
     private String info;
+    private Button Unlock;
+    private Button Lock;
     private static String url = "https://ohrtc5rmuk.execute-api.us-east-1.amazonaws.com/APIGetPrescription/APIGetPrescription";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,8 @@ public class pharmMainPage extends AppCompatActivity {
         Refresh = (Button)findViewById(R.id.btRefresh1);
         Pharmer = (TextView)findViewById(R.id.tvPharm);
         LogOut = (Button)findViewById(R.id.btLO3);
+        Unlock = (Button)findViewById(R.id.btUnlock);
+        Lock = (Button)findViewById(R.id.btLock);
         Intent intent = getIntent();
         String str = intent.getStringExtra("Username");
 
@@ -63,6 +67,20 @@ public class pharmMainPage extends AppCompatActivity {
                 });
 
         RQueueSingleton.getInstance(getApplicationContext()).getRequestQueue().add(jsonObjectRequest);
+
+        Lock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        Unlock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
 
         Refresh.setOnClickListener(new View.OnClickListener() {
             @Override
