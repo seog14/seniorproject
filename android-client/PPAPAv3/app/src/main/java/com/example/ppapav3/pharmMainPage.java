@@ -2,22 +2,20 @@ package com.example.ppapav3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.icu.text.IDNA;
+
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+
 import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.example.ppapav3.dto.AppResponse;
 import com.example.ppapav3.dto.PharmacistInfo;
-import com.example.ppapav3.model.JsonModel;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -25,8 +25,8 @@ public class doctorEdit extends AppCompatActivity {
     private EditText Date3;
     private Button Back;
     private Button CreatePA;
-    private Button CreateTime;
-    private static String url = "\thttps://vsa8yau8le.execute-api.us-east-1.amazonaws.com/APICreateUser/APICreateUser";
+    private static String url = "https://vsa8yau8le.execute-api.us-east-1.amazonaws.com/APICreateUser/APICreateUser";
+    private static String url1 = "https://22c3w4hz4f.execute-api.us-east-1.amazonaws.com/APICreateSchedule";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,15 +39,9 @@ public class doctorEdit extends AppCompatActivity {
         Date1 = (EditText)findViewById(R.id.etMonth);
         Date2 = (EditText)findViewById(R.id.etHour);
         Date3 = (EditText)findViewById(R.id.etMinute);
-        CreateTime = (Button)findViewById(R.id.btCreateTime);
 
-        CreateTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(doctorEdit.this, createGoodTime.class);
-                startActivity(intent);
-            }
-        });
+
+
         CreatePA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +51,7 @@ public class doctorEdit extends AppCompatActivity {
                     jsonObj.put("userId", PUser.getText().toString());
                     jsonObj.put("password", PPass.getText().toString());
                     jsonObj.put("role", "PATIENT");
+                    System.out.println(jsonObj.toString());
                 } catch (JSONException e){
                     throw new RuntimeException(e);
                 }
@@ -65,6 +60,36 @@ public class doctorEdit extends AppCompatActivity {
 
                             @Override
                             public void onResponse(JSONObject response) {
+
+                            }
+                        }, new Response.ErrorListener() {
+
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // TODO: Handle error
+
+                            }
+                        });
+                RQueueSingleton.getInstance(getApplicationContext()).getRequestQueue().add(jsonObjectRequest);
+                JSONObject jsonObj1;
+                try {
+                    jsonObj1 = new JSONObject();
+                    jsonObj1.put("user", "case");
+                    jsonObj1.put("month", Date1.getText().toString());
+                    jsonObj1.put("hour", Date2.getText().toString());
+                    jsonObj1.put("minute", Date3.getText().toString());
+                    System.out.println(Date1.getText().toString());
+                    System.out.println(Date2.getText().toString());
+                    System.out.println(Date3.getText().toString());
+                    System.out.println(jsonObj1.toString());
+                } catch (JSONException e){
+                    throw new RuntimeException(e);
+                }
+                JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest
+                        (Request.Method.PUT, url1, jsonObj1, new Response.Listener<JSONObject>() {
+
+                            @Override
+                            public void onResponse(JSONObject response1) {
                                 Intent intent = new Intent(doctorEdit.this, createGood2.class);
                                 startActivity(intent);
                             }
@@ -76,8 +101,10 @@ public class doctorEdit extends AppCompatActivity {
 
                             }
                         });
-                RQueueSingleton.getInstance(getApplicationContext()).getRequestQueue().add(jsonObjectRequest);
+                RQueueSingleton.getInstance(getApplicationContext()).getRequestQueue().add(jsonObjectRequest1);
+
             }
+
         });
         Back.setOnClickListener(new View.OnClickListener() {
             @Override

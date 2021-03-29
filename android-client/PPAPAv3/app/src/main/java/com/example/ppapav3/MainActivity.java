@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         RQueueSingleton.getInstance(getApplicationContext()).getRequestQueue().start();
+//        RQueueSingleton.getInstance(getApplicationContext()).setMainActivity(this);
+//        RQueueSingleton.getInstance(getApplicationContext()).startPollingThread();
     }
 
     private void toDoctor()
@@ -62,4 +64,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void pollCallBack() {
+        System.out.println("Main Activity callback called");
+        Intent intent = new Intent(MainActivity.this, doctorLogin.class);
+        startActivity(intent);
+//                Intent intent = new Intent(createGood.this, doctorMainPage.class);
+//                startActivity(intent);
+
+    }
 }

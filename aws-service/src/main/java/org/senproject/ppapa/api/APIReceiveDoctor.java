@@ -1,5 +1,6 @@
 package org.senproject.ppapa.api;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,20 +11,17 @@ import java.io.OutputStreamWriter;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.senproject.ppapa.dto.PatientSQS;
+import org.senproject.ppapa.dto.PrescriptionKey;
 import org.senproject.ppapa.dto.Response;
+import org.senproject.ppapa.model.Prescription;
+import org.senproject.ppapa.repository.DoctorRepository;
 import org.senproject.ppapa.repository.PatientRepository;
-
+import org.senproject.ppapa.repository.PrescriptionRepository;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
-import com.amazonaws.services.sqs.AmazonSQS;
-import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
-import com.amazonaws.services.sqs.model.SendMessageRequest;
 
-public class APIPushSQSPatient implements RequestStreamHandler {
-	
-	
+public class APIReceiveDoctor implements RequestStreamHandler {
 
 	public void handleRequest(InputStream input, OutputStream output, Context context) throws IOException {
 
@@ -35,10 +33,21 @@ public class APIPushSQSPatient implements RequestStreamHandler {
 		try {
 			JSONObject responseBody = new JSONObject();
 			JSONObject event = (JSONObject) parser.parse(reader);
-			context.getLogger().log("APIPushSQS invoked");
+			context.getLogger().log("APIReceivePatient invoked " + event);
+
+			DoctorRepository doctorRepository = new DoctorRepository();
+			if(doctorRepository.exists()){
+				response.setMessage("Success");
+				response.setError("No Error");
+				response.setStatus(1);
+				doctorRepository.delete();
+			}
+			else {
+				response.setMessage("Success");
+				response.setError("No Error");
+				response.setStatus(0);
+			}
 			
-			PatientRepository repository = new PatientRepository();
-			repository.save();
 			
 
 			JSONObject headerJson = new JSONObject();

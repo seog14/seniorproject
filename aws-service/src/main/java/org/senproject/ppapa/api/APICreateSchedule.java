@@ -39,9 +39,11 @@ public class APICreateSchedule {
 			JSONObject responseBody = new JSONObject();
 			JSONObject event = (JSONObject) parser.parse(reader);
 			context.getLogger().log("CreateSchedule invoked " + event);
-			if (event.get("body") != null) {
+			
 				Schedule schedule = (Schedule) Schedule.newInstance(Schedule.class, (String) event.get("body"));
+				context.getLogger().log("CreateSchedule invoked " + schedule.getMonth());
 				schedule.setUTC();
+				schedule.setUser("case");
 				putCWRule("case", schedule.getMonth(), schedule.getHour(), schedule.getMinute());
 				addTarget(schedule.getUser());
 				response.setMessage("Success");
@@ -52,8 +54,8 @@ public class APICreateSchedule {
 
 			responseJson.put("statusCode", 200);
 			responseJson.put("headers", headerJson);
-			responseJson.put("body", response.toString());
-			}
+			//responseJson.put("body", response.toString());
+			
 		} catch (ParseException pex) {
 			response.setMessage("Failure");
 			response.setError("Error");
@@ -114,7 +116,7 @@ public class APICreateSchedule {
 			    .withTargets(target)
 			    .withRule(name);
 		
-
 		PutTargetsResult response = cwe.putTargets(request);
+		
 	}
 }

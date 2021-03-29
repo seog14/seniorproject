@@ -40,6 +40,7 @@ public class patientLogin extends AppCompatActivity {
 
         Info.setText("# of Attempts Remaining: 5");
 
+
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,6 +114,7 @@ public class patientLogin extends AppCompatActivity {
 
         });
     }
+
 //    private void validate()
 //    {
 //        if (status)

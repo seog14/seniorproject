@@ -15,7 +15,8 @@ public class RecievePQ {
 	public static void main(String[] a) {
 		SQSConnectionFactory connectionFactory = new SQSConnectionFactory(
 		        new ProviderConfiguration(),
-		        AmazonSQSClientBuilder.standard().withRegion(Regions.US_EAST_1));
+		        AmazonSQSClientBuilder.standard().
+		        withRegion(Regions.US_EAST_1));
 		SQSConnection connection = null;
 		try {
 			connection = connectionFactory.createConnection();

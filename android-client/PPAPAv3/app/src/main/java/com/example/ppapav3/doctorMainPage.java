@@ -6,6 +6,12 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.ppapav3.dto.AppResponse;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,8 +22,34 @@ public class doctorMainPage extends AppCompatActivity {
     private Button EditPatient;
     private Button EditPharm;
     private Button AddPresc;
-    //String Signal = getIntent().getStringExtra("patientReady");
+    private static String url = "https://lkw4knwpif.execute-api.us-east-1.amazonaws.com/APIReceiveDoctor";
 
+
+    public void pollCallBack() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        AppResponse response1 = AppResponse.newInstance(AppResponse.class,  response);
+                        if(response1.getStatus() == 1) {
+                            Ready.setEnabled(true);
+                            Intent intent = new Intent(doctorMainPage.this, doctorMainPage.class);
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+
+
+        });
+
+        RQueueSingleton.getInstance(getApplicationContext()).getRequestQueue().add(stringRequest);
+
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,15 +60,14 @@ public class doctorMainPage extends AppCompatActivity {
         EditPatient = (Button)findViewById(R.id.btEditPatient);
         EditPharm = (Button)findViewById(R.id.btEditPharm);
         AddPresc = (Button)findViewById(R.id.btAddPresc);
-
+        RQueueSingleton.getInstance(getApplicationContext()).setDoctorMainPage(this);
+        RQueueSingleton.getInstance(getApplicationContext()).startPollingThread();
+        RQueueSingleton.getInstance(getApplicationContext()).setPage(0);
         Intent intent3 = getIntent();
         String Signal = intent3.getStringExtra("patientReady");
 
         Ready.setEnabled(false);
-        /*if (same as the patient page)
-        {
-            Ready.setEnabled(true);
-        }*/
+
         
         Ready.setOnClickListener(new View.OnClickListener() {
             @Override

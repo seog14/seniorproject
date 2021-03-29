@@ -12,6 +12,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.senproject.ppapa.dto.PatientSQS;
 import org.senproject.ppapa.dto.Response;
+import org.senproject.ppapa.repository.DoctorRepository;
 import org.senproject.ppapa.repository.PatientRepository;
 
 
@@ -21,7 +22,7 @@ import com.amazonaws.services.sqs.AmazonSQS;
 import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
 import com.amazonaws.services.sqs.model.SendMessageRequest;
 
-public class APIPushSQSPatient implements RequestStreamHandler {
+public class APIPushDoctor implements RequestStreamHandler {
 	
 	
 
@@ -35,10 +36,13 @@ public class APIPushSQSPatient implements RequestStreamHandler {
 		try {
 			JSONObject responseBody = new JSONObject();
 			JSONObject event = (JSONObject) parser.parse(reader);
-			context.getLogger().log("APIPushSQS invoked");
+			context.getLogger().log("APIPushDoctor invoked");
 			
-			PatientRepository repository = new PatientRepository();
+			DoctorRepository repository = new DoctorRepository();
 			repository.save();
+			response.setMessage("Success");
+			response.setError("No Error");
+			response.setStatus(1);
 			
 
 			JSONObject headerJson = new JSONObject();

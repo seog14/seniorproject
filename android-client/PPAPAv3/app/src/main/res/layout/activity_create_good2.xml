@@ -11,7 +11,7 @@
         android:layout_width="162dp"
         android:layout_height="82dp"
         android:gravity="center"
-        android:text="Patient Created Successfully"
+        android:text="Patient and Schedule Created Successfully"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
