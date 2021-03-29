@@ -18,8 +18,13 @@ import org.senproject.ppapa.repository.PrescriptionRepository;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
+import com.amazonaws.services.sqs.AmazonSQS;
+import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
+import com.amazonaws.services.sqs.model.SendMessageRequest;
 
 public class APIPushSQSPatient implements RequestStreamHandler {
+	
+	private static String url = "https://sqs.us-east-1.amazonaws.com/245932314163/DoctorPatientQueue";
 
 	public void handleRequest(InputStream input, OutputStream output, Context context) throws IOException {
 
@@ -31,21 +36,18 @@ public class APIPushSQSPatient implements RequestStreamHandler {
 		try {
 			JSONObject responseBody = new JSONObject();
 			JSONObject event = (JSONObject) parser.parse(reader);
-			context.getLogger().log("APICreatePrescription invoked ");
-			context.getLogger().log("APICreatePrescription invoked " + event);
+			context.getLogger().log("APIPushSQS invoked ");
+			context.getLogger().log("APIPushSQS invoked " + event.toString());
 
-			if (event.get("body") != null) {
-					PrescriptionRepository prescriptionR = new PrescriptionRepository(); 
-					PatientSQS patientSQS = (PatientSQS) PatientSQS.newInstance(PatientSQS.class, (String) event.get("body"));
-					Prescription p = new Prescription(); 
-					p.setKey(patientSQS.getUser());
-					p.setInformation("asdf");
-					prescriptionR.save(p);
-					response.setMessage("asdf");
-					response.setError("No Error");
-					response.setStatus(1);
+	        final AmazonSQS sqs = AmazonSQSClientBuilder.defaultClient();
+
+			SendMessageRequest send_msg_request = new SendMessageRequest()
+			        .withQueueUrl(url)
+			        .withMessageBody("1");
+			     
+			sqs.sendMessage(send_msg_request);
 				
-			}
+			
 
 			JSONObject headerJson = new JSONObject();
 			headerJson.put("x-custom-header", "my custom header value");

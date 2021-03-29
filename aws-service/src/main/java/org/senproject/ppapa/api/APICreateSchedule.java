@@ -42,7 +42,7 @@ public class APICreateSchedule {
 			if (event.get("body") != null) {
 				Schedule schedule = (Schedule) Schedule.newInstance(Schedule.class, (String) event.get("body"));
 				schedule.setUTC();
-				putCWRule(schedule.getUser(), schedule.getMonth(), schedule.getHour(), schedule.getMinute());
+				putCWRule("case", schedule.getMonth(), schedule.getHour(), schedule.getMinute());
 				addTarget(schedule.getUser());
 				response.setMessage("Success");
 				response.setError("No Error");
