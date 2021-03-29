@@ -25,6 +25,7 @@ import org.json.JSONObject;
 public class pharmMainPage extends AppCompatActivity {
 
     private Button LogOut;
+//    private Button Refresh;
     private TextView Pharmer;
     private String info;
     private static String url = "https://ohrtc5rmuk.execute-api.us-east-1.amazonaws.com/APIGetPrescription/APIGetPrescription";
@@ -33,6 +34,7 @@ public class pharmMainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pharm_main_page);
 
+//        Refresh = (Button)findViewById(R.id.btRefresh1);
         Pharmer = (TextView)findViewById(R.id.tvPharm);
         LogOut = (Button)findViewById(R.id.btLO3);
         Intent intent = getIntent();
@@ -64,7 +66,13 @@ public class pharmMainPage extends AppCompatActivity {
 
         RQueueSingleton.getInstance(getApplicationContext()).getRequestQueue().add(jsonObjectRequest);
 
-
+//        Refresh.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(pharmMainPage.this, pharmMainPage.class);
+//                startActivity(intent);
+//            }
+//        });
         LogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

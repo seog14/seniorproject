@@ -29,22 +29,22 @@ public class doctorMainPage extends AppCompatActivity {
         EditPharm = (Button)findViewById(R.id.btEditPharm);
         AddPresc = (Button)findViewById(R.id.btAddPresc);
 
-        Ready.setEnabled(false);
         Intent intent3 = getIntent();
         String Signal = intent3.getStringExtra("patientReady");
 
-
-        if (Signal == "1")
+        Ready.setEnabled(false);
+        /*if (same as the patient page)
         {
             Ready.setEnabled(true);
-            Ready.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(doctorMainPage.this, doctorReady.class);
-                    startActivity(intent);
-                }
-            });
-        }
+        }*/
+        
+        Ready.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(doctorMainPage.this, doctorReady.class);
+                startActivity(intent);
+            }
+        });
 
         LogOut.setOnClickListener(new View.OnClickListener() {
             @Override
