@@ -20,9 +20,14 @@ public class patientMainPage extends AppCompatActivity {
 
         Ready = (Button)findViewById(R.id.btReady2);
         LogOut = (Button)findViewById(R.id.btLO2);
-
         Intent intent = getIntent();
         String str = intent.getStringExtra("Username");
+
+        Ready.setEnabled(false);
+        /*if ( this is where you would do ure whole thing )
+        {
+            Ready.setEnabled(true);
+        }*/
 
         Ready.setOnClickListener(new View.OnClickListener() {
             @Override
