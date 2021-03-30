@@ -14,6 +14,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.example.ppapav3.dto.AppResponse;
 import com.example.ppapav3.dto.PharmacistInfo;
 
 
@@ -29,6 +31,7 @@ public class pharmMainPage extends AppCompatActivity {
     private Button Unlock;
     private Button Lock;
     private static String url = "https://ohrtc5rmuk.execute-api.us-east-1.amazonaws.com/APIGetPrescription/APIGetPrescription";
+    private static String url1 = "https://31nzsw1j45.execute-api.us-east-1.amazonaws.com/APIPushLockQ";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +41,7 @@ public class pharmMainPage extends AppCompatActivity {
         Pharmer = (TextView)findViewById(R.id.tvPharm);
         LogOut = (Button)findViewById(R.id.btLO3);
         Unlock = (Button)findViewById(R.id.btUnlock);
-        Lock = (Button)findViewById(R.id.btLock);
+
         Intent intent = getIntent();
         String str = intent.getStringExtra("Username");
 
@@ -68,17 +71,26 @@ public class pharmMainPage extends AppCompatActivity {
 
         RQueueSingleton.getInstance(getApplicationContext()).getRequestQueue().add(jsonObjectRequest);
 
-        Lock.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
 
         Unlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, url1,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+
+
+                });
+
+                RQueueSingleton.getInstance(getApplicationContext()).getRequestQueue().add(stringRequest);
             }
         });
 

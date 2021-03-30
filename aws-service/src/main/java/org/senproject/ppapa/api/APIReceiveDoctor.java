@@ -37,10 +37,11 @@ public class APIReceiveDoctor implements RequestStreamHandler {
 
 			DoctorRepository doctorRepository = new DoctorRepository();
 			if(doctorRepository.exists()){
+				doctorRepository.delete();
 				response.setMessage("Success");
 				response.setError("No Error");
 				response.setStatus(1);
-				doctorRepository.delete();
+				
 			}
 			else {
 				response.setMessage("Success");
