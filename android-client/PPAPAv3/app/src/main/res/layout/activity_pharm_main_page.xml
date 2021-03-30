@@ -19,17 +19,6 @@
         app:layout_constraintVertical_bias="0.947" />
 
     <Button
-        android:id="@+id/btLock"
-        android:layout_width="217dp"
-        android:layout_height="72dp"
-        android:text="Lock Apparatus"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.297" />
-
-    <Button
         android:id="@+id/btUnlock"
         android:layout_width="217dp"
         android:layout_height="72dp"
