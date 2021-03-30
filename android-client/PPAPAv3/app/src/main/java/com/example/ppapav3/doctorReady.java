@@ -15,6 +15,7 @@ public class doctorReady extends AppCompatActivity {
     private Button MoveFace;
     private Button MoveRight;
     private Button MoveLeft;
+    private Button Dispense;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +28,16 @@ public class doctorReady extends AppCompatActivity {
         MoveFace = (Button)findViewById(R.id.btMoveFace);
         MoveRight = (Button)findViewById(R.id.btMoveRight);
         MoveLeft = (Button)findViewById(R.id.btMoveLeft);
+        Dispense = (Button)findViewById(R.id.btDispense);
 
 
+        Dispense.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(doctorReady.this, doctorMainPage.class);
+                startActivity(intent);
+            }
+        });
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
