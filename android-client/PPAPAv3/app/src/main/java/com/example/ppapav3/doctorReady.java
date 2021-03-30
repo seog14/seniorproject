@@ -7,6 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.example.ppapav3.dto.AppResponse;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class doctorReady extends AppCompatActivity {
 
     private Button Back;
@@ -16,6 +26,8 @@ public class doctorReady extends AppCompatActivity {
     private Button MoveRight;
     private Button MoveLeft;
     private Button Dispense;
+    private static String url = "https://jfymkm5zsb.execute-api.us-east-1.amazonaws.com/APIPushDispenseQ";
+    private static String url1 = "https://xx2zi75bla.execute-api.us-east-1.amazonaws.com/AudioQ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +46,22 @@ public class doctorReady extends AppCompatActivity {
         Dispense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(doctorReady.this, doctorMainPage.class);
-                startActivity(intent);
+
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+
+
+                });
+
+                RQueueSingleton.getInstance(getApplicationContext()).getRequestQueue().add(stringRequest);
             }
         });
         Back.setOnClickListener(new View.OnClickListener() {
@@ -48,31 +74,142 @@ public class doctorReady extends AppCompatActivity {
         Reposition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                JSONObject jsonObj;
+                try {
+                    jsonObj = new JSONObject();
+                    jsonObj.put("key", "1");
+                } catch (JSONException e){
+                    throw new RuntimeException(e);
+                }
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                        (Request.Method.PUT, url1, jsonObj, new Response.Listener<JSONObject>() {
+
+                            @Override
+                            public void onResponse(JSONObject response) {
+                            }
+                        }, new Response.ErrorListener() {
+
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // TODO: Handle error
+
+                            }
+                        });
+
+                RQueueSingleton.getInstance(getApplicationContext()).getRequestQueue().add(jsonObjectRequest);
 
             }
         });
         MoveCloser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                JSONObject jsonObj;
+                try {
+                    jsonObj = new JSONObject();
+                    jsonObj.put("key", "2");
+                } catch (JSONException e){
+                    throw new RuntimeException(e);
+                }
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                        (Request.Method.PUT, url1, jsonObj, new Response.Listener<JSONObject>() {
 
+                            @Override
+                            public void onResponse(JSONObject response) {
+                            }
+                        }, new Response.ErrorListener() {
+
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // TODO: Handle error
+
+                            }
+                        });
+
+                RQueueSingleton.getInstance(getApplicationContext()).getRequestQueue().add(jsonObjectRequest);
             }
         });
         MoveFace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                JSONObject jsonObj;
+                try {
+                    jsonObj = new JSONObject();
+                    jsonObj.put("key", "3");
+                } catch (JSONException e){
+                    throw new RuntimeException(e);
+                }
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                        (Request.Method.PUT, url1, jsonObj, new Response.Listener<JSONObject>() {
 
+                            @Override
+                            public void onResponse(JSONObject response) {
+                            }
+                        }, new Response.ErrorListener() {
+
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // TODO: Handle error
+
+                            }
+                        });
+
+                RQueueSingleton.getInstance(getApplicationContext()).getRequestQueue().add(jsonObjectRequest);
             }
         });
         MoveRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                JSONObject jsonObj;
+                try {
+                    jsonObj = new JSONObject();
+                    jsonObj.put("key", "4");
+                } catch (JSONException e){
+                    throw new RuntimeException(e);
+                }
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                        (Request.Method.PUT, url1, jsonObj, new Response.Listener<JSONObject>() {
 
+                            @Override
+                            public void onResponse(JSONObject response) {
+                            }
+                        }, new Response.ErrorListener() {
+
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // TODO: Handle error
+
+                            }
+                        });
+
+                RQueueSingleton.getInstance(getApplicationContext()).getRequestQueue().add(jsonObjectRequest);
             }
         });
         MoveLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                JSONObject jsonObj;
+                try {
+                    jsonObj = new JSONObject();
+                    jsonObj.put("key", "5");
+                } catch (JSONException e){
+                    throw new RuntimeException(e);
+                }
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                        (Request.Method.PUT, url1, jsonObj, new Response.Listener<JSONObject>() {
 
+                            @Override
+                            public void onResponse(JSONObject response) {
+                            }
+                        }, new Response.ErrorListener() {
+
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // TODO: Handle error
+
+                            }
+                        });
+
+                RQueueSingleton.getInstance(getApplicationContext()).getRequestQueue().add(jsonObjectRequest);
             }
         });
 

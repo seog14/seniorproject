@@ -51,7 +51,7 @@ public class doctorEdit extends AppCompatActivity {
                     jsonObj.put("userId", PUser.getText().toString());
                     jsonObj.put("password", PPass.getText().toString());
                     jsonObj.put("role", "PATIENT");
-                    System.out.println(jsonObj.toString());
+                    
                 } catch (JSONException e){
                     throw new RuntimeException(e);
                 }
@@ -78,10 +78,7 @@ public class doctorEdit extends AppCompatActivity {
                     jsonObj1.put("month", Date1.getText().toString());
                     jsonObj1.put("hour", Date2.getText().toString());
                     jsonObj1.put("minute", Date3.getText().toString());
-                    System.out.println(Date1.getText().toString());
-                    System.out.println(Date2.getText().toString());
-                    System.out.println(Date3.getText().toString());
-                    System.out.println(jsonObj1.toString());
+
                 } catch (JSONException e){
                     throw new RuntimeException(e);
                 }

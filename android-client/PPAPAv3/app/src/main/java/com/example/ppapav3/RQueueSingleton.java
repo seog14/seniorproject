@@ -104,7 +104,7 @@ public class RQueueSingleton implements Runnable{
     public void run() {
         //
         while (true) {
-            System.out.println("Gareet is polling0");
+
             try {
                 /*
                 if doc --> call lambda for doctor tabl e
