@@ -51,7 +51,7 @@ public class doctorEdit extends AppCompatActivity {
                     jsonObj.put("userId", PUser.getText().toString());
                     jsonObj.put("password", PPass.getText().toString());
                     jsonObj.put("role", "PATIENT");
-                    
+
                 } catch (JSONException e){
                     throw new RuntimeException(e);
                 }

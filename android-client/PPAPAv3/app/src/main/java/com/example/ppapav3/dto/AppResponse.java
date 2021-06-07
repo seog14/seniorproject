@@ -8,6 +8,7 @@ public class AppResponse extends JsonModel {
     private String message;
     private int status;
 
+
     public String getMessage() {
         return message;
     }

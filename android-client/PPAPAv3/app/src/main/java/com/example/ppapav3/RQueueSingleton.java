@@ -115,6 +115,8 @@ public class RQueueSingleton implements Runnable{
                 }
                 else if (this.page == 0){
                     doctorMainPage.pollCallBack();
+
+
                 }
                 Thread.sleep(10000L);
                 // reference to screen, exceute the screen
