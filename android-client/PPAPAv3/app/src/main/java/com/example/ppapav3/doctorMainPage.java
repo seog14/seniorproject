@@ -55,7 +55,8 @@ public class doctorMainPage extends AppCompatActivity {
                     public void onResponse(String response) {
                         AppResponse response1 = AppResponse.newInstance(AppResponse.class,  response);
                         if(response1.getStatus() == 1) {
-                           System.out.println("kill me");
+                            Intent intent = new Intent(doctorMainPage.this, breakageDetected.class);
+                            startActivity(intent);;
                         }
 
                     }

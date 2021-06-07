@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PPAPAv3">
-        <activity android:name=".createGoodTime"></activity>
+        <activity android:name=".breakageDetected"></activity>
+        <activity android:name=".createGoodTime" />
         <activity android:name=".createBadPresc" />
         <activity android:name=".createGoodPresc" />
         <activity android:name=".createGood2" />
