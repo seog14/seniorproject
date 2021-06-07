@@ -22,8 +22,8 @@ public class doctorMainPage extends AppCompatActivity {
     private Button EditPatient;
     private Button EditPharm;
     private Button AddPresc;
-    private static String url = "https://lkw4knwpif.execute-api.us-east-1.amazonaws.com/APIReceiveDoctor";
-    private static String url1 = "https://konxom0eh3.execute-api.us-east-1.amazonaws.com";
+    private static String url = "https://dxge68yxm6.execute-api.us-east-1.amazonaws.com/";
+    private static String url1 = "https://ofgge26xui.execute-api.us-east-1.amazonaws.com/";
 
 
     public void pollCallBack() {
@@ -55,7 +55,7 @@ public class doctorMainPage extends AppCompatActivity {
                     public void onResponse(String response) {
                         AppResponse response1 = AppResponse.newInstance(AppResponse.class,  response);
                         if(response1.getStatus() == 1) {
-                           //Change to new notification alarm Intent intent = new Intent(doctorMainPage.this, doctorMainPage.class);
+                           System.out.println("kill me");
                         }
 
                     }
@@ -68,7 +68,7 @@ public class doctorMainPage extends AppCompatActivity {
 
         });
 
-        RQueueSingleton.getInstance(getApplicationContext()).getRequestQueue().add(stringRequest);
+        RQueueSingleton.getInstance(getApplicationContext()).getRequestQueue().add(stringRequest1);
 
     }
     @Override

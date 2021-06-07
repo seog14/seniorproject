@@ -22,8 +22,8 @@ public class patientMainPage extends AppCompatActivity {
 
     private Button Ready;
     private Button LogOut;
-    private static String url = "https://ybrn1ft5ad.execute-api.us-east-1.amazonaws.com//APIReceivePatient";
-    private static String url1 = "https://0kqrr39fn5.execute-api.us-east-1.amazonaws.com/APIPushDoctor";
+    private static String url = "https://dd4n7veiy2.execute-api.us-east-1.amazonaws.com/";
+    private static String url1 = "https://7gynejatnj.execute-api.us-east-1.amazonaws.com/";
     public void pollCallBack() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {

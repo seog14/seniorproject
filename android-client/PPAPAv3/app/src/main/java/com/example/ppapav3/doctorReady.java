@@ -26,8 +26,8 @@ public class doctorReady extends AppCompatActivity {
     private Button MoveRight;
     private Button MoveLeft;
     private Button Dispense;
-    private static String url = "https://jfymkm5zsb.execute-api.us-east-1.amazonaws.com/APIPushDispenseQ";
-    private static String url1 = "https://xx2zi75bla.execute-api.us-east-1.amazonaws.com/AudioQ";
+    private static String url = "https://ao9txgzw6f.execute-api.us-east-1.amazonaws.com/";
+    private static String url1 = "https://c18oa141xa.execute-api.us-east-1.amazonaws.com/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

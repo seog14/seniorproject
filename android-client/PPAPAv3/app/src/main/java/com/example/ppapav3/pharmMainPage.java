@@ -30,8 +30,8 @@ public class pharmMainPage extends AppCompatActivity {
     private String info;
     private Button Unlock;
     private Button Lock;
-    private static String url = "https://ohrtc5rmuk.execute-api.us-east-1.amazonaws.com/APIGetPrescription/APIGetPrescription";
-    private static String url1 = "https://31nzsw1j45.execute-api.us-east-1.amazonaws.com/APIPushLockQ";
+    private static String url = "https://j6r40qwzv8.execute-api.us-east-1.amazonaws.com/";
+    private static String url1 = "https://ncqpwo2usa.execute-api.us-east-1.amazonaws.com/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

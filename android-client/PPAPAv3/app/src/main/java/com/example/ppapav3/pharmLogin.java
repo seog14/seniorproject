@@ -28,7 +28,7 @@ import org.json.JSONObject;
 
 public class pharmLogin extends AppCompatActivity {
 
-    private static String url ="https://wsl67412p7.execute-api.us-east-1.amazonaws.com/APILoginCheck/APILoginCheck";
+    private static String url ="https://9ss939r4xa.execute-api.us-east-1.amazonaws.com/";
     private EditText Name;
     private EditText Password;
     private TextView Info;

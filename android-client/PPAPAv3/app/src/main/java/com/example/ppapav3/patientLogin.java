@@ -24,7 +24,7 @@ public class patientLogin extends AppCompatActivity {
     private TextView Info;
     private Button Login;
     private int counter = 5;
-    private static String url ="https://wsl67412p7.execute-api.us-east-1.amazonaws.com/APILoginCheck/APILoginCheck";
+    private static String url ="https://9ss939r4xa.execute-api.us-east-1.amazonaws.com/";
     
 
 

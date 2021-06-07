@@ -25,8 +25,8 @@ public class doctorEdit extends AppCompatActivity {
     private EditText Date3;
     private Button Back;
     private Button CreatePA;
-    private static String url = "https://vsa8yau8le.execute-api.us-east-1.amazonaws.com/APICreateUser/APICreateUser";
-    private static String url1 = "https://22c3w4hz4f.execute-api.us-east-1.amazonaws.com/APICreateSchedule";
+    private static String url = "https://v1rcjxkgvc.execute-api.us-east-1.amazonaws.com/";
+    private static String url1 = "https://x7pnwwoc7k.execute-api.us-east-1.amazonaws.com/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

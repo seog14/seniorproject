@@ -22,7 +22,7 @@ public class editPharm extends AppCompatActivity {
     private Button CreateP;
     private EditText PharmUser;
     private EditText PharmPass;
-    private static String url = "\thttps://vsa8yau8le.execute-api.us-east-1.amazonaws.com/APICreateUser/APICreateUser";
+    private static String url = "https://v1rcjxkgvc.execute-api.us-east-1.amazonaws.com/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
