@@ -47,7 +47,7 @@ public class doctorReady extends AppCompatActivity {
         Dispense = (Button)findViewById(R.id.btDispense);
         myWebView = (WebView)findViewById(R.id.ankitugly);
         myWebView.setWebViewClient(new WebViewClient());
-        myWebView.loadUrl("https://192.168.1.14:8000");
+        myWebView.loadUrl("http://192.168.1.14:8000");
 
         Dispense.setOnClickListener(new View.OnClickListener() {
             @Override
