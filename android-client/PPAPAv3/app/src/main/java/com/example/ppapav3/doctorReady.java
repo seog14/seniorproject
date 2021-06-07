@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 
 import com.android.volley.Request;
@@ -19,6 +21,7 @@ import org.json.JSONObject;
 
 public class doctorReady extends AppCompatActivity {
 
+    private WebView myWebView;
     private Button Back;
     private Button Reposition;
     private Button MoveCloser;
@@ -31,6 +34,7 @@ public class doctorReady extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_ready);
 
@@ -41,7 +45,9 @@ public class doctorReady extends AppCompatActivity {
         MoveRight = (Button)findViewById(R.id.btMoveRight);
         MoveLeft = (Button)findViewById(R.id.btMoveLeft);
         Dispense = (Button)findViewById(R.id.btDispense);
-
+        myWebView = (WebView)findViewById(R.id.ankitugly);
+        myWebView.setWebViewClient(new WebViewClient());
+        myWebView.loadUrl("https://192.168.1.14:8000");
 
         Dispense.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -27,12 +27,13 @@ public class doctorMainPage extends AppCompatActivity {
 
 
     public void pollCallBack() {
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        AppResponse response1 = AppResponse.newInstance(AppResponse.class,  response);
-                        if(response1.getStatus() == 1) {
+                        AppResponse response1 = AppResponse.newInstance(AppResponse.class, response);
+                        if (response1.getStatus() == 1) {
                             Ready.setEnabled(true);
                             Intent intent = new Intent(doctorMainPage.this, doctorMainPage.class);
                         }
@@ -87,7 +88,6 @@ public class doctorMainPage extends AppCompatActivity {
         RQueueSingleton.getInstance(getApplicationContext()).setPage(0);
         Intent intent3 = getIntent();
         String Signal = intent3.getStringExtra("patientReady");
-
         Ready.setEnabled(false);
 
         
