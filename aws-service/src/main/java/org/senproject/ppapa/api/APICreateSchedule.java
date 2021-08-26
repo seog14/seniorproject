@@ -36,7 +36,7 @@ public class APICreateSchedule {
 		JSONObject responseJson = new JSONObject();
 		Response response = new Response();
 		try {
-			JSONObject responseBody = new JSONObject();
+			
 			JSONObject event = (JSONObject) parser.parse(reader);
 			context.getLogger().log("CreateSchedule invoked " + event);
 			

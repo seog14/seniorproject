@@ -27,7 +27,7 @@ public class APICreatePrescription implements RequestStreamHandler {
 		Response response = new Response();
 
 		try {
-			JSONObject responseBody = new JSONObject();
+
 			JSONObject event = (JSONObject) parser.parse(reader);
 			context.getLogger().log("APICreatePrescription invoked " + event);
 

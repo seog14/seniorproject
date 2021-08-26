@@ -1,27 +1,16 @@
 package org.senproject.ppapa.api;
 
 
-import java.io.BufferedReader;
+
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-import org.senproject.ppapa.dto.PatientSQS;
-import org.senproject.ppapa.dto.Response;
-import org.senproject.ppapa.repository.PatientRepository;
-
 
 import com.amazonaws.services.lambda.runtime.Context;
-import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
 import com.amazonaws.services.sqs.AmazonSQS;
 import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
 import com.amazonaws.services.sqs.model.SendMessageRequest;
-import com.amazonaws.services.sqs.model.Message;
+
 
 public class APIPushLockQ {
 	

@@ -11,11 +11,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.senproject.ppapa.dto.AudioQ;
-import org.senproject.ppapa.dto.PatientSQS;
-import org.senproject.ppapa.dto.PrescriptionKey;
 import org.senproject.ppapa.dto.Response;
-import org.senproject.ppapa.repository.PatientRepository;
-import org.senproject.ppapa.repository.PrescriptionRepository;
+
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
@@ -38,7 +35,7 @@ public class APIPushAudioQ implements RequestStreamHandler {
 		try {
 			
 			JSONObject responseBody = new JSONObject();
-		JSONObject event = (JSONObject) parser.parse(reader);
+			JSONObject event = (JSONObject) parser.parse(reader);
 			context.getLogger().log("APIPushAudioQ invoked");
 			if (event.get("body") != null) {
 				AudioQ audioQ = (AudioQ) AudioQ.newInstance(AudioQ.class, (String)event.get("body"));

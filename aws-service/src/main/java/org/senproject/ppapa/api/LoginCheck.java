@@ -14,13 +14,6 @@ import org.senproject.ppapa.dto.Login;
 import org.senproject.ppapa.dto.Response;
 import org.senproject.ppapa.repository.UserRepository;
 
-import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.cloudwatchevents.AmazonCloudWatchEvents;
-import com.amazonaws.services.cloudwatchevents.AmazonCloudWatchEventsClientBuilder;
-import com.amazonaws.services.cloudwatchevents.model.PutRuleRequest;
-import com.amazonaws.services.cloudwatchevents.model.PutRuleResult;
-import com.amazonaws.services.cloudwatchevents.model.RuleState;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
 

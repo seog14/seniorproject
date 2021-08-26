@@ -12,7 +12,6 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.senproject.ppapa.dto.PrescriptionKey;
 import org.senproject.ppapa.dto.Response;
-import org.senproject.ppapa.model.Prescription;
 import org.senproject.ppapa.repository.PrescriptionRepository;
 
 import com.amazonaws.services.lambda.runtime.Context;

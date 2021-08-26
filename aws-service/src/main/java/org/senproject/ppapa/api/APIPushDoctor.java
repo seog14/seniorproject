@@ -10,17 +10,13 @@ import java.io.OutputStreamWriter;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.senproject.ppapa.dto.PatientSQS;
 import org.senproject.ppapa.dto.Response;
 import org.senproject.ppapa.repository.DoctorRepository;
-import org.senproject.ppapa.repository.PatientRepository;
 
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
-import com.amazonaws.services.sqs.AmazonSQS;
-import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
-import com.amazonaws.services.sqs.model.SendMessageRequest;
+
 
 public class APIPushDoctor implements RequestStreamHandler {
 	
